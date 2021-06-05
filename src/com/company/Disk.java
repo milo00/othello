@@ -7,8 +7,12 @@ public class Disk {
         this.color = color;
     }
 
-    public String getColor() {
+    public String getColorString() {
         return color == Color.BLACK ? "B" : "W";
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     public void setColor(Color color) {

@@ -1,27 +1,32 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 //TODO: rename
 public class Hole {
     private static final int INITIAL_NUMBER_OF_DISKS = 32;
-    private ArrayList<Disk> disks;
-    private Color color;
+    private final Stack<Disk> disks;
+    private final Color color;
 
     public Hole(Color color) {
         this.color = color;
-        this.disks = new ArrayList<>(INITIAL_NUMBER_OF_DISKS);
+        this.disks = new Stack<>();
         for (int i = 0; i < INITIAL_NUMBER_OF_DISKS; i++) {
             disks.add(new Disk(color));
         }
     }
 
-    public ArrayList<Disk> getDisks() {
-        return disks;
+    public int getDisks() {
+        return disks.size();
     }
 
-    public void setDisks(ArrayList<Disk> disks) {
-        this.disks = disks;
+    public Disk takeDisk() {
+        return disks.pop();
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     @Override
