@@ -42,6 +42,10 @@ public class Board {
         }
     }
 
+    public void pushDiskBackToHole(Disk disk) {
+        getHole(disk.getColor()).pushDisk(disk);
+    }
+
     public Color getPlayerColor(int player) {
         if (player == 1) return hole1.getColor();
         else if (player == 2) return hole2.getColor();
@@ -63,7 +67,7 @@ public class Board {
                 |                     %s                    |
                 |                                           |
                 ╰–––––––––––––––––––––––––––––––––––––––––––╯            
-                """, hole1);
+                """, hole2);
         for (int i = 0; i < 8; i++) {
             System.out.print("     ");
 
@@ -94,6 +98,6 @@ public class Board {
                 |                     %s                    |
                 |                                           |
                 ╰–––––––––––––––––––––––––––––––––––––––––––╯            
-                """, hole2);
+                """, hole1);
     }
 }

@@ -25,6 +25,10 @@ public class Hole {
         return disks.pop();
     }
 
+    public void pushDisk(Disk disk) {
+        disks.push(disk);
+    }
+
     public Color getColor() {
         return color;
     }
