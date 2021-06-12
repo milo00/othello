@@ -8,15 +8,39 @@ public class Server {
     private final Player player2;
 
     public Server() {
-        Color color = chooseColor();
-        this.logic = new Logic(color);
+        Player players[] = chooseMode();
+        player1 = players[0];
+        player2 = players[1];
 
-        Color oppositeColor = color == Color.BLACK ? Color.WHITE : Color.BLACK;
-        player1 = new Player(color);
-        player2 = new Player(oppositeColor);
+        this.logic = new Logic(player1.getColor());
     }
 
-    public Color chooseColor() {
+    private Player[] chooseMode() {
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        while (true) {
+            System.out.println("Choose mode:\n1 - player vs player\n2 - player vs computer\n3 - computer vs computer");
+            input = scanner.nextLine();
+            switch (input) {
+                case "1" -> {
+                    Color color = chooseColor();
+                    Color oppositeColor = color == Color.BLACK ? Color.WHITE : Color.BLACK;
+                    return new Player[]{new HumanPlayer(color), new HumanPlayer(oppositeColor)};
+                }
+                case "2" -> {
+                    Color color = chooseColor();
+                    Color oppositeColor = color == Color.BLACK ? Color.WHITE : Color.BLACK;
+                    return new Player[]{new HumanPlayer(color), new Computer(oppositeColor)};
+                }
+                case "3" -> {
+                    return new Player[]{new Computer(Color.WHITE), new Computer(Color.BLACK)};
+                }
+                default -> System.out.println("Wrong number. Try again.");
+            }
+        }
+    }
+
+    private Color chooseColor() {
         Scanner scanner = new Scanner(System.in);
         String input;
         while (true) {
