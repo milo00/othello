@@ -51,7 +51,6 @@ public class Player {
                 }
             }
         } while (incorrect);
-
         return new int[]{pos2 - 1, pos1};
     }
 }

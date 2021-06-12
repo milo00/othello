@@ -8,7 +8,11 @@ public class Square {
     }
 
     public Color getColor() {
-        return disk == null ? Color.GREEN : disk.getColor();
+        if (disk == null) {
+            return Color.GREEN;
+        } else {
+            return disk.getColor();
+        }
     }
 
     public boolean put(Disk disk) {
@@ -18,6 +22,10 @@ public class Square {
         } else {
             return false;
         }
+    }
+
+    public Disk getDisk() {
+        return disk;
     }
 
     @Override

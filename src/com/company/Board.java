@@ -52,12 +52,21 @@ public class Board {
         else return null;
     }
 
-    public Color getSquare(int x, int y) {
-        return fields[x][y].getColor();
+    public Color getSquare(int row, int column) {
+        return fields[row][column].getColor();
     }
 
     public boolean put(int x, int y, Disk disk) {
         return fields[x][y].put(disk);
+    }
+
+    public boolean changeDiskColor(int row, int column) {
+        if (row < 0 || column < 0 || row > 8 || column > 8) {
+            return false;
+        } else {
+            fields[row][column].getDisk().changeColor();
+            return true;
+        }
     }
 
     public void print() {

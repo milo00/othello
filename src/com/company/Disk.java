@@ -15,7 +15,7 @@ public class Disk {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void changeColor() {
+        color = color == Color.BLACK ? Color.WHITE : Color.BLACK;
     }
 }
