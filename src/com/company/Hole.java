@@ -17,6 +17,14 @@ public class Hole {
         }
     }
 
+    public Hole(Hole hole) {
+        this.color = hole.color;
+        this.disks = new Stack<>();
+        for (int i = 0; i < hole.getDisks(); i++) {
+            disks.add(new Disk(color));
+        }
+    }
+
     public int getDisks() {
         return disks.size();
     }

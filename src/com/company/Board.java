@@ -1,21 +1,34 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Board {
     private static final int DIMENSIONS_OF_BOARD = 8;
 
-    private static Square[][] fields;
-    private static Hole hole1;
-    private static Hole hole2;
+    private final Square[][] fields;
+    private final Hole hole1;
+    private final Hole hole2;
 
-    public Board(Color color) {
+    public Board() {
         fields = new Square[8][8];
         for (int i = 0; i < DIMENSIONS_OF_BOARD; i++) {
             for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
                 fields[i][j] = new Square();
             }
         }
-        hole1 = new Hole(color);
-        hole2 = color == Color.BLACK ? new Hole(Color.WHITE) : new Hole(Color.BLACK);
+        hole1 = new Hole(Color.WHITE);
+        hole2 = new Hole(Color.BLACK);
+    }
+
+    public Board(Board board) {
+        fields = new Square[8][8];
+        for (int i = 0; i < DIMENSIONS_OF_BOARD; i++) {
+            for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
+                fields[i][j] = new Square(board.fields[i][j]);
+            }
+        }
+        hole1 = new Hole(board.hole1);
+        hole2 = new Hole(board.hole2);
     }
 
     private Hole getHole(Color color) {
@@ -43,21 +56,15 @@ public class Board {
     }
 
     public void pushDiskBackToHole(Disk disk) {
-        getHole(disk.getColor()).pushDisk(disk);
-    }
-
-    public Color getPlayerColor(int player) {
-        if (player == 1) return hole1.getColor();
-        else if (player == 2) return hole2.getColor();
-        else return null;
+        Objects.requireNonNull(getHole(disk.getColor())).pushDisk(disk);
     }
 
     public Color getSquare(int row, int column) {
         return fields[row][column].getColor();
     }
 
-    public boolean put(int x, int y, Disk disk) {
-        return fields[x][y].put(disk);
+    public boolean put(int x, int y, Disk disk, boolean ifChange) {
+        return fields[x][y].put(disk, ifChange);
     }
 
     public boolean changeDiskColor(int row, int column) {
@@ -67,6 +74,10 @@ public class Board {
             fields[row][column].getDisk().changeColor();
             return true;
         }
+    }
+
+    public Color checkColor(int row, int column){
+        return fields[row][column].getColor();
     }
 
     public void print() {

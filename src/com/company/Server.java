@@ -8,11 +8,11 @@ public class Server {
     private final Player player2;
 
     public Server() {
-        Player players[] = chooseMode();
+        Player[] players = chooseMode();
         player1 = players[0];
         player2 = players[1];
 
-        this.logic = new Logic(player1.getColor());
+        this.logic = new Logic();
     }
 
     private Player[] chooseMode() {
@@ -40,6 +40,7 @@ public class Server {
         }
     }
 
+    //TODO: make it works
     private Color chooseColor() {
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -49,7 +50,7 @@ public class Server {
             if (input.equals("W")) {
                 return Color.WHITE;
             } else if (input.equals("B")) {
-                return Color.BLACK;
+                return Color.WHITE;
             } else {
                 System.out.println("Wrong input. Try again.");
             }
@@ -63,7 +64,7 @@ public class Server {
         position = player1.move(1);
         logic.makeMove(player1, position[0], position[1]);
         logic.print();
-        while (!logic.ifEnded()) {
+        while (true) {
             position = player2.move(2);
             success = logic.makeMove(player2, position[0], position[1]);
             while (!success) {
@@ -72,6 +73,9 @@ public class Server {
                 success = logic.makeMove(player2, position[0], position[1]);
             }
             logic.print();
+            if (logic.ifEnded()) {
+                break;
+            }
             position = player1.move(1);
             success = logic.makeMove(player1, position[0], position[1]);
             while (!success) {
@@ -81,5 +85,18 @@ public class Server {
             }
             logic.print();
         }
+        generateResults();
+    }
+
+    public void generateResults() {
+        Simulator.Tuple<Color, Integer> results = logic.whichColorWon();
+
+        if (results.getSecond() == 0) {
+            System.out.println("It's a draw! Nobody won!!");
+            return;
+        }
+
+        int playerNumber = player1.getColor() == results.getFirst() ? 1 : 2;
+        System.out.println("Player" + playerNumber + " won with " + results.getSecond() + " points! Congrats!");
     }
 }
