@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Objects;
-
 public class Board {
     private static final int DIMENSIONS_OF_BOARD = 8;
 
@@ -20,17 +18,6 @@ public class Board {
         hole2 = new Hole(Color.BLACK);
     }
 
-    public Board(Board board) {
-        fields = new Square[8][8];
-        for (int i = 0; i < DIMENSIONS_OF_BOARD; i++) {
-            for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
-                fields[i][j] = new Square(board.fields[i][j]);
-            }
-        }
-        hole1 = new Hole(board.hole1);
-        hole2 = new Hole(board.hole2);
-    }
-
     private Hole getHole(Color color) {
         if (color == hole1.getColor()) return hole1;
         else if (color == hole2.getColor()) return hole2;
@@ -46,21 +33,36 @@ public class Board {
         }
     }
 
-    public Disk takeDiskFromHole(Color color) {
+    public Disk peekDiskFromHole(Color color) {
         Hole hole = getHole(color);
         if (hole == null) {
             return null;
         } else {
-            return hole.takeDisk();
+            return hole.peekDisk();
         }
     }
 
-    public void pushDiskBackToHole(Disk disk) {
-        Objects.requireNonNull(getHole(disk.getColor())).pushDisk(disk);
+    public Disk popDiskFromHole(Color color) {
+        Hole hole = getHole(color);
+        if (hole == null) {
+            return null;
+        } else {
+            return hole.popDisk();
+        }
     }
 
-    public Color getSquare(int row, int column) {
-        return fields[row][column].getColor();
+    public boolean pushDiskBackToHole(Disk disk) {
+        if (disk == null) {
+            return false;
+        } else {
+            Hole hole = getHole(disk.getColor());
+            if (hole == null) {
+                return false;
+            } else {
+                hole.pushDisk(disk);
+                return true;
+            }
+        }
     }
 
     public boolean put(int x, int y, Disk disk, boolean ifChange) {
@@ -76,7 +78,7 @@ public class Board {
         }
     }
 
-    public Color checkColor(int row, int column){
+    public Color getColor(int row, int column) {
         return fields[row][column].getColor();
     }
 

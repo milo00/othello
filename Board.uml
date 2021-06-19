@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.company.Board</OriginalElement>
+  <nodes>
+    <node x="239.0" y="704.0">com.company.Disk</node>
+    <node x="0.0" y="704.0">com.company.Square</node>
+    <node x="379.0" y="387.0">com.company.Hole</node>
+    <node x="0.0" y="0.0">com.company.Board</node>
+    <node x="565.0" y="171.0">com.company.Simulator.Tuple</node>
+    <node x="657.0" y="704.0">com.company.Main</node>
+    <node x="174.0" y="570.5">com.company.HumanPlayer</node>
+    <node x="454.0" y="704.0">com.company.Color</node>
+    <node x="283.0" y="183.0">com.company.Logic</node>
+    <node x="638.0" y="387.0">com.company.Server</node>
+    <node x="92.0" y="387.0">com.company.Player</node>
+    <node x="0.0" y="559.0">com.company.Computer</node>
+    <node x="335.0" y="0.0">com.company.Simulator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.Computer" target="com.company.Player">
+      <point x="0.0" y="-50.0" />
+      <point x="77.0" y="534.0" />
+      <point x="128.75" y="534.0" />
+      <point x="-36.75" y="61.0" />
+    </edge>
+    <edge source="com.company.Logic" target="com.company.Simulator">
+      <point x="0.0" y="-60.0" />
+      <point x="414.0" y="146.0" />
+      <point x="427.75" y="146.0" />
+      <point x="-92.75" y="60.5" />
+    </edge>
+    <edge source="com.company.Simulator.Tuple" target="com.company.Simulator">
+      <point x="0.0" y="-72.0" />
+      <point x="627.0" y="146.0" />
+      <point x="613.25" y="146.0" />
+      <point x="92.75" y="60.5" />
+    </edge>
+    <edge source="com.company.HumanPlayer" target="com.company.Player">
+      <point x="0.0" y="-38.5" />
+      <point x="254.0" y="534.0" />
+      <point x="202.25" y="534.0" />
+      <point x="36.75" y="61.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="403.5" y="571.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

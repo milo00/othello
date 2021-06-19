@@ -11,5 +11,5 @@ public abstract class Player {
         return color;
     }
 
-   public abstract int[] move(int id);
+   public abstract Position move(int id);
 }

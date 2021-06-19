@@ -7,10 +7,6 @@ public class Disk {
         this.color = color;
     }
 
-    public Disk(Disk disk){
-        this.color = disk.color;
-    }
-
     public String getColorString() {
         return color == Color.BLACK ? "B" : "W";
     }

@@ -7,10 +7,6 @@ public class Square {
         disk = null;
     }
 
-    public Square(Square square) {
-        this.disk = square.disk == null ? null : new Disk(square.disk);
-    }
-
     public Color getColor() {
         if (disk == null) {
             return Color.GREEN;

@@ -2,13 +2,13 @@ package com.company;
 
 public class Logic extends Simulator {
 
-    public Logic() {
-        super();
+    public boolean makeMove(Player player, int row, int column) {
+        Disk disk = board.popDiskFromHole(player.getColor());
+        return move(player, row, column, true, disk).getFirst();
     }
 
-    public boolean makeMove(Player player, int row, int column) {
-        Disk disk = board.takeDiskFromHole(player.getColor());
-        return move(player, row, column, true, disk).getFirst();
+    public boolean ifEnded() {
+        return board.getHoleDisks(Color.BLACK) == 0 && board.getHoleDisks(Color.WHITE) == 0;
     }
 
     public void print() {
@@ -20,7 +20,7 @@ public class Logic extends Simulator {
         int whiteCounter = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (board.checkColor(i, j) == Color.BLACK) {
+                if (board.getColor(i, j) == Color.BLACK) {
                     blackCounter++;
                 } else {
                     whiteCounter++;

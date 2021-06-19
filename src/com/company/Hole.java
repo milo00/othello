@@ -1,9 +1,7 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
-//TODO: rename
 public class Hole {
     private static final int INITIAL_NUMBER_OF_DISKS = 32;
     private final Stack<Disk> disks;
@@ -17,21 +15,18 @@ public class Hole {
         }
     }
 
-    public Hole(Hole hole) {
-        this.color = hole.color;
-        this.disks = new Stack<>();
-        for (int i = 0; i < hole.getDisks(); i++) {
-            disks.add(new Disk(color));
-        }
-    }
-
     public int getDisks() {
         return disks.size();
     }
 
-    public Disk takeDisk() {
+    public Disk peekDisk() {
+        return disks.peek();
+    }
+
+    public Disk popDisk() {
         return disks.pop();
     }
+
 
     public void pushDisk(Disk disk) {
         disks.push(disk);

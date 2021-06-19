@@ -23,14 +23,10 @@ public class Server {
             input = scanner.nextLine();
             switch (input) {
                 case "1" -> {
-                    Color color = chooseColor();
-                    Color oppositeColor = color == Color.BLACK ? Color.WHITE : Color.BLACK;
-                    return new Player[]{new HumanPlayer(color), new HumanPlayer(oppositeColor)};
+                    return new Player[]{new HumanPlayer(Color.WHITE), new HumanPlayer(Color.BLACK)};
                 }
                 case "2" -> {
-                    Color color = chooseColor();
-                    Color oppositeColor = color == Color.BLACK ? Color.WHITE : Color.BLACK;
-                    return new Player[]{new HumanPlayer(color), new Computer(oppositeColor)};
+                    return new Player[]{new HumanPlayer(Color.WHITE), new Computer(Color.BLACK)};
                 }
                 case "3" -> {
                     return new Player[]{new Computer(Color.WHITE), new Computer(Color.BLACK)};
@@ -40,55 +36,38 @@ public class Server {
         }
     }
 
-    //TODO: make it works
-    private Color chooseColor() {
-        Scanner scanner = new Scanner(System.in);
-        String input;
-        while (true) {
-            System.out.println("Player1 - choose which color you want to play (B - black, W - white):");
-            input = scanner.nextLine();
-            if (input.equals("W")) {
-                return Color.WHITE;
-            } else if (input.equals("B")) {
-                return Color.WHITE;
-            } else {
-                System.out.println("Wrong input. Try again.");
-            }
-        }
-    }
-
     public void play() {
         logic.print();
-        int[] position;
+        Position position;
         boolean success;
-        position = player1.move(1);
-        logic.makeMove(player1, position[0], position[1]);
-        logic.print();
-        while (true) {
-            position = player2.move(2);
-            success = logic.makeMove(player2, position[0], position[1]);
-            while (!success) {
-                System.out.println("You cannot chose that position - it has to be empty. Try again.");
-                position = player2.move(2);
-                success = logic.makeMove(player2, position[0], position[1]);
-            }
-            logic.print();
-            if (logic.ifEnded()) {
-                break;
-            }
+        while (!logic.ifEnded()) {
             position = player1.move(1);
-            success = logic.makeMove(player1, position[0], position[1]);
+            success = logic.makeMove(player1, position.getRow(), position.getColumn());
             while (!success) {
                 System.out.println("You cannot chose that position - it has to be empty. Try again.");
                 position = player1.move(1);
-                success = logic.makeMove(player1, position[0], position[1]);
+                success = logic.makeMove(player1, position.getRow(), position.getColumn());
+
             }
+            System.out.println("Player1 move from position: " + position);
+            logic.print();
+
+            position = player2.move(2);
+            success = logic.makeMove(player2, position.getRow(), position.getColumn());
+
+            while (!success) {
+                System.out.println("You cannot chose that position - it has to be empty. Try again.");
+                position = player2.move(2);
+                success = logic.makeMove(player2, position.getRow(), position.getColumn());
+
+            }
+            System.out.println("Player2 move from position: " + position);
             logic.print();
         }
         generateResults();
     }
 
-    public void generateResults() {
+    private void generateResults() {
         Simulator.Tuple<Color, Integer> results = logic.whichColorWon();
 
         if (results.getSecond() == 0) {
