@@ -40,7 +40,7 @@ public class Logic extends Simulator {
         }
     }
 
-    public Board getBoard(){
-        return board;
+    public Color getSquareColor(int row, int column){
+        return board.getColor(row, column);
     }
 }

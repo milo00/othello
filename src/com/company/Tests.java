@@ -163,13 +163,13 @@ public class Tests {
     @Test
     public void logicMakeMoveTest(){
         Logic logic = new Logic();
-        assertEquals(Color.GREEN, logic.getBoard().getColor(7, 7));
+        assertEquals(Color.GREEN, logic.getSquareColor(7, 7));
 
         assertTrue(logic.makeMove(Color.WHITE, 7, 7));
-        assertEquals(Color.WHITE, logic.getBoard().getColor(7, 7));
+        assertEquals(Color.WHITE, logic.getSquareColor(7, 7));
 
         assertFalse(logic.makeMove(Color.BLACK, 7, 7));
-        assertEquals(Color.WHITE, logic.getBoard().getColor(7, 7));
+        assertEquals(Color.WHITE, logic.getSquareColor(7, 7));
     }
 
     @Test
@@ -188,11 +188,11 @@ public class Tests {
 
         logic.makeMove(Color.WHITE, 0, 0);
         logic.makeMove(Color.BLACK, 1, 0);
-        assertEquals(Color.BLACK, logic.getBoard().getColor(1, 0));
+        assertEquals(Color.BLACK, logic.getSquareColor(1, 0));
 
         assertEquals(new Position(2, 0), simulator.simulate(Color.WHITE));
         logic.makeMove(Color.WHITE, 2, 0);
-        assertEquals(Color.WHITE, logic.getBoard().getColor(1, 0));
+        assertEquals(Color.WHITE, logic.getSquareColor(1, 0));
 
         logic.makeMove(Color.BLACK, 2, 1);
         assertEquals(new Position(2, 2), simulator.simulate(Color.WHITE));
@@ -222,9 +222,9 @@ public class Tests {
         logic.makeMove(Color.BLACK, 7, 4);
 
         assertTrue(logic.makeMove(Color.BLACK, 4, 4));
-        assertEquals(Color.BLACK, logic.getBoard().getColor(3, 5));
-        assertEquals(Color.BLACK, logic.getBoard().getColor(5, 4));
-        assertEquals(Color.BLACK, logic.getBoard().getColor(6, 4));
+        assertEquals(Color.BLACK, logic.getSquareColor(3, 5));
+        assertEquals(Color.BLACK, logic.getSquareColor(5, 4));
+        assertEquals(Color.BLACK, logic.getSquareColor(6, 4));
     }
 
     @Test
@@ -235,12 +235,12 @@ public class Tests {
         logic.makeMove(Color.WHITE, 6, 6);
 
         assertTrue(logic.makeMove(Color.BLACK, 5, 6));
-        assertEquals(Color.WHITE, logic.getBoard().getColor(4, 6));
-        assertEquals(Color.WHITE, logic.getBoard().getColor(6, 6));
-        assertEquals(Color.BLACK, logic.getBoard().getColor(5, 6));
+        assertEquals(Color.WHITE, logic.getSquareColor(4, 6));
+        assertEquals(Color.WHITE, logic.getSquareColor(6, 6));
+        assertEquals(Color.BLACK, logic.getSquareColor(5, 6));
 
         assertTrue(logic.makeMove(Color.BLACK, 7, 6));
-        assertEquals(Color.BLACK, logic.getBoard().getColor(6, 6));
+        assertEquals(Color.BLACK, logic.getSquareColor(6, 6));
     }
 
     @Test
