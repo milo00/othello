@@ -134,7 +134,7 @@ public class Tests {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"A11", "AAA", "K0", "K9", "111", "000", ",a,", "", "A", "1"})
+    @ValueSource(strings = {"A11", "AAA", "K0", "K9", "111", ",,", ",a,", "", "A", "1"})
     public void bothWrongValueStringTest(String string){
         Position position = new Position();
         assertFalse(position.set(string));
@@ -163,6 +163,8 @@ public class Tests {
     @Test
     public void logicMakeMoveTest(){
         Logic logic = new Logic();
+        assertEquals(Color.GREEN, logic.getBoard().getColor(7, 7));
+
         assertTrue(logic.makeMove(Color.WHITE, 7, 7));
         assertEquals(Color.WHITE, logic.getBoard().getColor(7, 7));
 

@@ -2,13 +2,15 @@ package com.company;
 
 public class Board {
     private static final int DIMENSIONS_OF_BOARD = 8;
+    private static final int MIN_INDEX = 0;
+    private static final int MAX_INDEX = 7;
 
     private final Square[][] fields;
     private final Hole hole1;
     private final Hole hole2;
 
     public Board() {
-        fields = new Square[8][8];
+        fields = new Square[DIMENSIONS_OF_BOARD][DIMENSIONS_OF_BOARD];
         for (int i = 0; i < DIMENSIONS_OF_BOARD; i++) {
             for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
                 fields[i][j] = new Square();
@@ -66,7 +68,7 @@ public class Board {
     }
 
     public boolean put(int row, int column, Disk disk, boolean ifChange) {
-        if (row < 0 || column < 0 || row > 7 || column > 7 || disk == null) {
+        if (row < MIN_INDEX || column < MIN_INDEX || row > MAX_INDEX || column > MAX_INDEX || disk == null) {
             return false;
         } else {
             return fields[row][column].put(disk, ifChange);
@@ -74,7 +76,7 @@ public class Board {
     }
 
     public boolean changeDiskColor(int row, int column) {
-        if (row < 0 || column < 0 || row > 7 || column > 7) {
+        if (row < MIN_INDEX || column < MIN_INDEX || row > MAX_INDEX || column > MAX_INDEX) {
             return false;
         } else {
             Disk disk = fields[row][column].getDisk();
@@ -88,7 +90,7 @@ public class Board {
     }
 
     public Color getColor(int row, int column) {
-        if (row < 0 || column < 0 || row > 7 || column > 7) {
+        if (row < MIN_INDEX || column < MIN_INDEX || row > MAX_INDEX || column > MAX_INDEX) {
             return null;
         } else {
             return fields[row][column].getColor();
@@ -103,21 +105,21 @@ public class Board {
                 |                                           |
                 ╰–––––––––––––––––––––––––––––––––––––––––––╯            
                 """, hole2);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < DIMENSIONS_OF_BOARD; i++) {
             System.out.print("     ");
 
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
                 System.out.print("╭–––╮");
             }
             System.out.println();
             System.out.print("  " + (i + 1) + "  ");
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
                 System.out.format("| %s |", fields[i][j]);
             }
 
             System.out.println();
             System.out.print("     ");
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
                 System.out.print("╰–––╯");
             }
             System.out.println();

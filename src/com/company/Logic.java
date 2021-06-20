@@ -1,6 +1,9 @@
 package com.company;
 
 public class Logic extends Simulator {
+    private static final int DIMENSIONS_OF_BOARD = 8;
+    private static final int DRAW_SCORE = 0;
+    private static final int INITIAL_COUNTER_VALUE = 0;
 
     public boolean makeMove(Color color, int row, int column) {
         Disk disk = board.popDiskFromHole(color);
@@ -16,10 +19,10 @@ public class Logic extends Simulator {
     }
 
     public Tuple<Color, Integer> whichColorWon() {
-        int blackCounter = 0;
-        int whiteCounter = 0;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+        int blackCounter = INITIAL_COUNTER_VALUE;
+        int whiteCounter = INITIAL_COUNTER_VALUE;
+        for (int i = 0; i < DIMENSIONS_OF_BOARD; i++) {
+            for (int j = 0; j < DIMENSIONS_OF_BOARD; j++) {
                 if (board.getColor(i, j) == Color.BLACK) {
                     blackCounter++;
                 } else {
@@ -33,7 +36,7 @@ public class Logic extends Simulator {
         } else if (whiteCounter > blackCounter) {
             return new Tuple<>(Color.WHITE, whiteCounter - blackCounter);
         } else {
-            return new Tuple<>(Color.GREEN, 0);
+            return new Tuple<>(Color.GREEN, DRAW_SCORE);
         }
     }
 

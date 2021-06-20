@@ -3,49 +3,111 @@
   <ID>JAVA</ID>
   <OriginalElement>com.company.Board</OriginalElement>
   <nodes>
-    <node x="239.0" y="704.0">com.company.Disk</node>
-    <node x="0.0" y="704.0">com.company.Square</node>
-    <node x="379.0" y="387.0">com.company.Hole</node>
-    <node x="0.0" y="0.0">com.company.Board</node>
-    <node x="565.0" y="171.0">com.company.Simulator.Tuple</node>
-    <node x="657.0" y="704.0">com.company.Main</node>
-    <node x="174.0" y="570.5">com.company.HumanPlayer</node>
-    <node x="454.0" y="704.0">com.company.Color</node>
-    <node x="283.0" y="183.0">com.company.Logic</node>
-    <node x="638.0" y="387.0">com.company.Server</node>
-    <node x="92.0" y="387.0">com.company.Player</node>
-    <node x="0.0" y="559.0">com.company.Computer</node>
-    <node x="335.0" y="0.0">com.company.Simulator</node>
+    <node x="648.3657407407408" y="193.0">com.company.Disk</node>
+    <node x="678.8657407407408" y="431.0">com.company.Square</node>
+    <node x="444.86574074074076" y="387.0">com.company.Hole</node>
+    <node x="575.0046296296296" y="691.0">com.company.Board</node>
+    <node x="751.949074074074" y="1506.5">com.company.Simulator.Tuple</node>
+    <node x="92.82021898324183" y="73.00190114068442">com.company.Main</node>
+    <node x="458.75" y="0.0">com.company.Color</node>
+    <node x="327.25000000000006" y="1843.0">com.company.HumanPlayer</node>
+    <node x="0.0" y="1474.0">com.company.Logic</node>
+    <node x="72.25" y="1733.0">com.company.Server</node>
+    <node x="365.25" y="1517.5">com.company.Player</node>
+    <node x="625.949074074074" y="1843.0">com.company.Computer</node>
+    <node x="510.0046296296296" y="1127.0">com.company.Simulator</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.company.Computer" target="com.company.Player">
-      <point x="0.0" y="-50.0" />
-      <point x="77.0" y="534.0" />
-      <point x="128.75" y="534.0" />
-      <point x="-36.75" y="61.0" />
+      <point x="-38.5" y="-50.0" />
+      <point x="664.449074074074" y="1708.0" />
+      <point x="487.75" y="1708.0" />
+      <point x="49.0" y="61.0" />
     </edge>
-    <edge source="com.company.Logic" target="com.company.Simulator">
-      <point x="0.0" y="-60.0" />
-      <point x="414.0" y="146.0" />
-      <point x="427.75" y="146.0" />
-      <point x="-92.75" y="60.5" />
+    <edge source="com.company.Hole" target="com.company.Color">
+      <point x="-53.5" y="-127.0" />
+      <point x="498.3657407407407" y="168.0" />
+      <point x="537.75" y="168.0" />
+      <point x="0.0" y="71.5" />
+    </edge>
+    <edge source="com.company.Disk" target="com.company.Color">
+      <point x="0.0" y="-72.0" />
+      <point x="733.3657407407408" y="168.0" />
+      <point x="590.4166666666667" y="168.0" />
+      <point x="52.666666666666686" y="71.5" />
     </edge>
     <edge source="com.company.Simulator.Tuple" target="com.company.Simulator">
       <point x="0.0" y="-72.0" />
-      <point x="627.0" y="146.0" />
-      <point x="613.25" y="146.0" />
-      <point x="92.75" y="60.5" />
+      <point x="813.949074074074" y="1454.0" />
+      <point x="816.6712962962963" y="1454.0" />
+      <point x="122.66666666666669" y="148.5" />
     </edge>
     <edge source="com.company.HumanPlayer" target="com.company.Player">
-      <point x="0.0" y="-38.5" />
-      <point x="254.0" y="534.0" />
-      <point x="202.25" y="534.0" />
-      <point x="36.75" y="61.0" />
+      <point x="-5.6843418860808015E-14" y="-50.0" />
+      <point x="0.0" y="61.0" />
+    </edge>
+    <edge source="com.company.Hole" target="com.company.Disk">
+      <point x="53.5" y="-127.0" />
+      <point x="605.3657407407408" y="362.0" />
+      <point x="690.8657407407408" y="362.0" />
+      <point x="-42.5" y="72.0" />
+    </edge>
+    <edge source="com.company.Simulator" target="com.company.Board">
+      <point x="0.0" y="-148.5" />
+      <point x="0.0" y="193.0" />
+    </edge>
+    <edge source="com.company.Logic" target="com.company.Simulator">
+      <point x="0.0" y="-104.5" />
+      <point x="131.0" y="1454.0" />
+      <point x="571.3379629629629" y="1454.0" />
+      <point x="-122.66666666666667" y="148.5" />
+    </edge>
+    <edge source="com.company.Board" target="com.company.Hole">
+      <point x="-59.49999999999997" y="-193.0" />
+      <point x="634.5046296296297" y="666.0" />
+      <point x="551.8657407407408" y="666.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="com.company.Computer" target="com.company.Simulator">
+      <point x="38.5" y="-50.0" />
+      <point x="741.449074074074" y="1454.0" />
+      <point x="694.0046296296296" y="1454.0" />
+      <point x="0.0" y="148.5" />
+    </edge>
+    <edge source="com.company.Square" target="com.company.Disk">
+      <point x="0.0" y="-83.0" />
+      <point x="42.5" y="72.0" />
+    </edge>
+    <edge source="com.company.Player" target="com.company.Color">
+      <point x="0.0" y="-61.0" />
+      <point x="438.75" y="1444.0" />
+      <point x="429.50462962962956" y="1444.0" />
+      <point x="429.50462962962956" y="168.0" />
+      <point x="485.0833333333333" y="168.0" />
+      <point x="-52.666666666666686" y="71.5" />
+    </edge>
+    <edge source="com.company.Server" target="com.company.Logic">
+      <point x="-58.75" y="-160.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="com.company.Server" target="com.company.Player">
+      <point x="58.75" y="-160.0" />
+      <point x="248.5" y="1708.0" />
+      <point x="389.75" y="1708.0" />
+      <point x="-49.0" y="61.0" />
+    </edge>
+    <edge source="com.company.Board" target="com.company.Square">
+      <point x="59.50000000000003" y="-193.0" />
+      <point x="753.5046296296297" y="666.0" />
+      <point x="775.8657407407408" y="666.0" />
+      <point x="0.0" y="83.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="403.5" y="571.5" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.5890257558790594" x="1080.1216730038022" y="463.0009505703422" />
+  <SelectedNodes>
+    <node>com.company.Main</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>

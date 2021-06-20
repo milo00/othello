@@ -3,8 +3,14 @@ package com.company;
 import java.util.Objects;
 
 public class Position {
-
     private static final int INCORRECT_VALUE = -1;
+    private static final int MIN_INDEX = 0;
+    private static final int MAX_INDEX = 7;
+    private static final int CORRECT_POSITION_LENGTH = 2;
+    private static final int DIFF_BETWEEN_USER_INPUT_AND_APP_LOGIC = 1;
+    private static final int LETTER_INDEX = 0;
+    private static final int NUMBER_INDEX = 1;
+
     private int row;
     private int column;
 
@@ -14,12 +20,12 @@ public class Position {
     }
 
     public Position(int row, int column) {
-        if (row < 0 || row > 7) {
+        if (row < MIN_INDEX || row > MAX_INDEX) {
             this.row = INCORRECT_VALUE;
         } else {
             this.row = row;
         }
-        if (column < 0 || column > 7) {
+        if (column < MIN_INDEX || column > MAX_INDEX) {
             this.column = INCORRECT_VALUE;
         } else {
             this.column = column;
@@ -27,10 +33,10 @@ public class Position {
     }
 
     public boolean set(String positions) {
-        if (positions.length() != 2) {
+        if (positions.length() != CORRECT_POSITION_LENGTH) {
             return false;
         } else {
-            column = switch (positions.charAt(0)) {
+            column = switch (positions.charAt(LETTER_INDEX)) {
                 case 'A' -> 0;
                 case 'B' -> 1;
                 case 'C' -> 2;
@@ -43,9 +49,9 @@ public class Position {
             };
 
             try {
-                row = Integer.parseInt(positions.substring(1)) - 1;
+                row = Integer.parseInt(positions.substring(NUMBER_INDEX)) - DIFF_BETWEEN_USER_INPUT_AND_APP_LOGIC;
 
-                if (row < 0 || row > 7) {
+                if (row < MIN_INDEX || row > MAX_INDEX) {
                     row = INCORRECT_VALUE;
                     return false;
                 }
@@ -88,7 +94,7 @@ public class Position {
             default -> "";
         };
 
-        return pos1 + (row + 1);
+        return pos1 + (row + DIFF_BETWEEN_USER_INPUT_AND_APP_LOGIC);
     }
 
     @Override
