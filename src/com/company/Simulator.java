@@ -5,16 +5,16 @@ import java.util.Random;
 public class Simulator {
     protected static Board board = new Board();
 
-    public Position simulate(Player player) {
+    public Position simulate(Color color) {
         int bestRow = -1;
         int bestColumn = -1;
         int bestScore = -1;
         Tuple<Boolean, Integer> actualResult;
-        Disk disk = board.peekDiskFromHole(player.getColor());
+        Disk disk = board.peekDiskFromHole(color);
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                actualResult = move(player, i, j, false, disk);
+                actualResult = move(color, i, j, false, disk);
                 if (actualResult.first && actualResult.second > bestScore) {
                     bestScore = actualResult.getSecond();
                     bestRow = i;
@@ -28,7 +28,7 @@ public class Simulator {
             do {
                 bestRow = random.nextInt(8);
                 bestColumn = random.nextInt(8);
-                actualResult = move(player, bestRow, bestColumn, false, disk);
+                actualResult = move(color, bestRow, bestColumn, false, disk);
             }
             while (!actualResult.first);
         }
@@ -36,7 +36,7 @@ public class Simulator {
         return new Position(bestRow, bestColumn);
     }
 
-    protected Tuple<Boolean, Integer> move(Player player, int row, int column, boolean ifChange, Disk disk) {
+    protected Tuple<Boolean, Integer> move(Color color, int row, int column, boolean ifChange, Disk disk) {
         boolean success = board.put(row, column, disk, ifChange);
         if (!success) {
             if (ifChange) {
@@ -44,7 +44,7 @@ public class Simulator {
             }
             return new Tuple<>(false, 0);
         } else {
-            return new Tuple<>(true, spreadTheMove(player.getColor(), row, column, ifChange));
+            return new Tuple<>(true, spreadTheMove(color, row, column, ifChange));
         }
     }
 

@@ -42,23 +42,23 @@ public class Server {
         boolean success;
         while (!logic.ifEnded()) {
             position = player1.move(1);
-            success = logic.makeMove(player1, position.getRow(), position.getColumn());
+            success = logic.makeMove(player1.getColor(), position.getRow(), position.getColumn());
             while (!success) {
                 System.out.println("You cannot chose that position - it has to be empty. Try again.");
                 position = player1.move(1);
-                success = logic.makeMove(player1, position.getRow(), position.getColumn());
+                success = logic.makeMove(player1.getColor(), position.getRow(), position.getColumn());
 
             }
             System.out.println("Player1 move from position: " + position);
             logic.print();
 
             position = player2.move(2);
-            success = logic.makeMove(player2, position.getRow(), position.getColumn());
+            success = logic.makeMove(player2.getColor(), position.getRow(), position.getColumn());
 
             while (!success) {
                 System.out.println("You cannot chose that position - it has to be empty. Try again.");
                 position = player2.move(2);
-                success = logic.makeMove(player2, position.getRow(), position.getColumn());
+                success = logic.makeMove(player2.getColor(), position.getRow(), position.getColumn());
 
             }
             System.out.println("Player2 move from position: " + position);

@@ -16,7 +16,7 @@ public class Square {
     }
 
     public boolean put(Disk disk, boolean ifChange) {
-        if (this.disk == null) {
+        if (this.disk == null && disk != null) {
             if (ifChange) {
                 this.disk = disk;
             }

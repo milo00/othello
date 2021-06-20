@@ -10,6 +10,6 @@ public class Computer extends Player {
 
     @Override
     public Position move(int id) {
-        return simulator.simulate(this);
+        return simulator.simulate(getColor());
     }
 }

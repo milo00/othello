@@ -65,21 +65,34 @@ public class Board {
         }
     }
 
-    public boolean put(int x, int y, Disk disk, boolean ifChange) {
-        return fields[x][y].put(disk, ifChange);
+    public boolean put(int row, int column, Disk disk, boolean ifChange) {
+        if (row < 0 || column < 0 || row > 7 || column > 7 || disk == null) {
+            return false;
+        } else {
+            return fields[row][column].put(disk, ifChange);
+        }
     }
 
     public boolean changeDiskColor(int row, int column) {
-        if (row < 0 || column < 0 || row > 8 || column > 8) {
+        if (row < 0 || column < 0 || row > 7 || column > 7) {
             return false;
         } else {
-            fields[row][column].getDisk().changeColor();
-            return true;
+            Disk disk = fields[row][column].getDisk();
+            if (disk != null) {
+                disk.changeColor();
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
     public Color getColor(int row, int column) {
-        return fields[row][column].getColor();
+        if (row < 0 || column < 0 || row > 7 || column > 7) {
+            return null;
+        } else {
+            return fields[row][column].getColor();
+        }
     }
 
     public void print() {

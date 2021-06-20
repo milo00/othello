@@ -2,9 +2,9 @@ package com.company;
 
 public class Logic extends Simulator {
 
-    public boolean makeMove(Player player, int row, int column) {
-        Disk disk = board.popDiskFromHole(player.getColor());
-        return move(player, row, column, true, disk).getFirst();
+    public boolean makeMove(Color color, int row, int column) {
+        Disk disk = board.popDiskFromHole(color);
+        return move(color, row, column, true, disk).getFirst();
     }
 
     public boolean ifEnded() {
@@ -35,5 +35,9 @@ public class Logic extends Simulator {
         } else {
             return new Tuple<>(Color.GREEN, 0);
         }
+    }
+
+    public Board getBoard(){
+        return board;
     }
 }

@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Position {
 
     private static final int INCORRECT_VALUE = -1;
@@ -12,8 +14,16 @@ public class Position {
     }
 
     public Position(int row, int column) {
-        this.row = row;
-        this.column = column;
+        if (row < 0 || row > 7) {
+            this.row = INCORRECT_VALUE;
+        } else {
+            this.row = row;
+        }
+        if (column < 0 || column > 7) {
+            this.column = INCORRECT_VALUE;
+        } else {
+            this.column = column;
+        }
     }
 
     public boolean set(String positions) {
@@ -40,7 +50,7 @@ public class Position {
                     return false;
                 }
 
-                return true;
+                return column != INCORRECT_VALUE;
             } catch (NumberFormatException e) {
                 row = INCORRECT_VALUE;
                 return false;
@@ -79,5 +89,22 @@ public class Position {
         };
 
         return pos1 + (row + 1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Position position = (Position) o;
+        return row == position.row && column == position.column;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, column);
     }
 }
